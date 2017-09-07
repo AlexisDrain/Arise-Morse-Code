@@ -349,7 +349,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1313602290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.837076, y: 2.0739, z: -3.466208}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 2066724749}
   - component: {fileID: 2066724751}
   - component: {fileID: 2066724752}
+  - component: {fileID: 2066724753}
   m_Layer: 5
   m_Name: Interpreter
   m_TagString: Untagged
@@ -631,6 +632,7 @@ RectTransform:
   m_Children:
   - {fileID: 949986817}
   - {fileID: 2128703758}
+  - {fileID: 2072076853}
   m_Father: {fileID: 1726576984}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -697,6 +699,147 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3092b7cd7aa69f8408f18b8cbbd68155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ariseAlphabet:
+  - '-'
+  - .
+  - ..
+  - '...'
+  - '....'
+  - '.....'
+  - -....
+  - --...
+  - '---..'
+  - '----.'
+  - --
+  - ..
+  - -.
+  - .-
+  dotImg: {fileID: 21300000, guid: 73dc4ab1d08f0294aaa872def25d0209, type: 3}
+  dashImg: {fileID: 21300002, guid: 73dc4ab1d08f0294aaa872def25d0209, type: 3}
+--- !u!82 &2066724753
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066724747}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e9ab6720cb02c1c4f928020792b87488, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!1 &2072076851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2072076853}
+  - component: {fileID: 2072076852}
+  m_Layer: 0
+  m_Name: MorseChar Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2072076852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072076851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb9b6a15cf91294cbad9c0ca9e96c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectsToCreate: 6
+  setPoolTransformAsParent: 1
+  prefeb: {fileID: 1074029381999274, guid: 5a6781b806d16fe43bffdf49bffdcaf1, type: 2}
+--- !u!4 &2072076853
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072076851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -140, y: 13.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2066724748}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2128703757
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +850,7 @@ GameObject:
   - component: {fileID: 2128703758}
   - component: {fileID: 2128703760}
   - component: {fileID: 2128703759}
+  - component: {fileID: 2128703761}
   m_Layer: 5
   m_Name: Needle
   m_TagString: Untagged
@@ -729,7 +873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 8, y: 0}
   m_SizeDelta: {x: 4, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2128703759
@@ -765,3 +909,16 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2128703757}
+--- !u!114 &2128703761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2128703757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097bec25111f6a7439ba27e2d2b45068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCountdownOnAwake: 1
+  countdownTime: 0.45
