@@ -5,6 +5,53 @@ using UnityEngine.UI;
 
 public class MorseInput : MonoBehaviour {
 
+	// Arise alphabet
+	// 0 1 2 3 4 5 6 7 8 9
+	// N S E W
+	// U
+	// H
+
+	/* International Morse Code
+
+		A .-
+		B -...
+		C -.-.
+		D -..
+		E .
+		F ..-.
+		G --.
+		H ....
+		I ..
+		J .---
+		K -.-
+		L .-..
+		M --
+		N -.
+		O ---
+		P .--.
+		Q --.-
+		R .-.
+		S ...
+		T -
+		U ..-
+		V ...-
+		W .--
+		X -..-
+		Y -.--
+		Z --..
+
+		0 .----
+		1 ..---
+		2 ...--
+		3 ....-
+		4 .....
+		5 -....
+		6 --...
+		7 ---..
+		8 ----.
+		9 -----
+
+	*/
 
 	// also Input.GetButtonDown("SubmitPremature") for entering morse quickly
 
@@ -13,14 +60,15 @@ public class MorseInput : MonoBehaviour {
 	public Sprite dashImg;
 
 	private float commandEndTimer;
-	private bool commandBeingEntered = false;
 
 	private float buttonHeldTime;
 
 	private string result = "";
 
+	private Text LetterResultText;
 	private GameObject needleGameObject;
 	private Vector2 needleStartPosition;
+	private FlashEntity needleFlashEntity;
 	private Pool dotPool;
 
 	private AudioSource morseAudioSource;
@@ -28,15 +76,17 @@ public class MorseInput : MonoBehaviour {
 	private void Start() {
 		morseAudioSource = GetComponent<AudioSource>();
 
-
+		LetterResultText = transform.Find("LetterResult").GetComponent<Text>();
 		needleGameObject = transform.Find("Needle").gameObject;
 		needleStartPosition = needleGameObject.GetComponent<RectTransform>().anchoredPosition;
+		needleFlashEntity = needleGameObject.GetComponent<FlashEntity>();
 		dotPool = GameObject.Find("MorseChar Pool").GetComponent<Pool>();
 
 		for (int i = 0; i < dotPool.pooledObjects.Count; i++) {
 
 			dotPool.pooledObjects[i].SetActive(true);
 		}
+		EmptyVisualField();
 	}
 	private void EmptyVisualField() {
 
@@ -46,54 +96,116 @@ public class MorseInput : MonoBehaviour {
 
 			dotPool.pooledObjects[i].GetComponent<Image>().enabled = false;
 		}
-		//dotPool.DeactivateAllMembers();
-		//dashPool.DeactivateAllMembers();
 	}
-	private void CompareInputToAlphabet(string input) {
-
+	private void EnterCommand(string command) {
+		
 		EmptyVisualField();
 
+
 		for (int i = 0; i < ariseAlphabet.Count; i += 1) {
-			if (ariseAlphabet[i] == result) {
+			if (ariseAlphabet[i] == command) {
 
 				if (i == 0) {
 
-					print("Zero");
+					LetterResultText.text = "0";
+					break;
 				}
 				else if (i == 1) {
 
-					print("One");
+					LetterResultText.text = "1";
+					break;
 				}
 				else if (i == 2) {
+					LetterResultText.text = "2";
+					break;
+				}
+				else if (i == 3) {
+					LetterResultText.text = "3";
+					break;
+				}
+				else if (i == 4) {
+					LetterResultText.text = "4";
+					break;
+				}
+				else if (i == 5) {
+					LetterResultText.text = "5";
+					break;
+				}
+				else if (i == 6) {
+					LetterResultText.text = "6";
+					break;
+				}
+				else if (i == 7) {
+					LetterResultText.text = "7";
+					break;
+				}
+				else if (i == 8) {
+					LetterResultText.text = "8";
+					break;
+				}
+				else if (i == 9) {
+					LetterResultText.text = "9";
+					break;
+				}
+				else if (i == 10) {
+					LetterResultText.text = "N";
 
-					print("Two");
+					for (int j = 0; j < GameManager.players.Count; j += 1) {
+						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(0f, 1f));
+					}
+					break;
+				}
+				else if (i == 11) {
+					LetterResultText.text = "S";
+
+					for (int j = 0; j < GameManager.players.Count; j += 1) {
+						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(0f, -1f));
+					}
+					break;
+				}
+				else if (i == 12) {
+					LetterResultText.text = "E";
+
+					for (int j = 0; j < GameManager.players.Count; j += 1) {
+						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(1f, 0f));
+					}
+					break;
+				}
+				else if (i == 13) {
+					LetterResultText.text = "W";
+
+					for (int j = 0; j < GameManager.players.Count; j += 1) {
+						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(-1f, 0f));
+					}
+					break;
+				}
+				else if (i == 14) {
+					LetterResultText.text = "U";
+					break;
 				}
 			}
 		}
 
-		print(result);
+		// DeleteCommand();
+		result = "";
 	}
 	private void EnterCharacter() {
-		commandBeingEntered = true;
+
+		if (result.Length >= 5) {
+			return;
+		}
 
 		string characterEntered;
 
 		if (buttonHeldTime < 0.2f) {
 			characterEntered = ".";
-			result = result + ".";
 		}
 		else {
 			characterEntered = "-";
-			result = result + "-";
 		}
-
-		if (commandBeingEntered == true && commandEndTimer > 0.5f) {
-			commandBeingEntered = false;
-			CompareInputToAlphabet(result);
-		}
+		result = result + characterEntered;
 
 		buttonHeldTime = 0;
-		// reset command timer
 		commandEndTimer = 0;
 
 		if (characterEntered == ".") {
@@ -114,47 +226,45 @@ public class MorseInput : MonoBehaviour {
 			dotPool.pooledObjects[result.Length - 1].transform.position = needleGameObject.GetComponent<RectTransform>().position + new Vector3(17f, -8f, 1f);
 			needleGameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(38f, 0f) + needleGameObject.GetComponent<RectTransform>().anchoredPosition;
 		}
-		
-		
+		dotPool.pooledObjects[result.Length - 1].GetComponent<Image>().enabled = true;
+
 		morseAudioSource.Stop();
 	}
+
 	private void Update () {
 
 		if (Input.GetButton("Action") == true) {
-			commandBeingEntered = true;
 
 			buttonHeldTime += Time.deltaTime;
 			// reset command timer
 			commandEndTimer = 0;
 
-			needleGameObject.GetComponent<FlashEntity>().ForceTrue();
+			needleFlashEntity.ForceTrue();
 		}
-		if (Input.GetButton("Action") == false) {
+		else {
 
 			commandEndTimer += Time.deltaTime;
 		}
 		
 		if (Input.GetButtonDown("Action") == true) {
-			commandBeingEntered = false;
+
 			morseAudioSource.Play();
 		}
 
 		if (Input.GetButtonUp("Action") == true) {
 			EnterCharacter();
-			needleGameObject.GetComponent<FlashEntity>().StartTimer();
+			needleFlashEntity.StartTimer();
 		}
 		if (Input.GetButtonDown("MorseSubmit") == true) {
 			if (Input.GetButton("Action") == true) {
 				EnterCharacter();
 			}
 
-			commandBeingEntered = false;
-			CompareInputToAlphabet(result);
-			result = "";
+			EnterCommand(result);
 		}
 
-		//if (commandBeingEntered == true) {
-		//	commandEndTimer += Time.deltaTime;
-		//}
+		if (result.Length > 0 && commandEndTimer > 1.2f) {
+			EnterCommand(result);
+		}
 	}
 }
