@@ -72,9 +72,11 @@ public class MorseInput : MonoBehaviour {
 	private Pool dotPool;
 
 	private AudioSource morseAudioSource;
+	private float morseAudioSourceDefaultVolume;
 
 	private void Start() {
 		morseAudioSource = GetComponent<AudioSource>();
+		morseAudioSourceDefaultVolume = morseAudioSource.volume;
 
 		LetterResultText = transform.Find("LetterResult").GetComponent<Text>();
 		needleGameObject = transform.Find("Needle").gameObject;
@@ -228,7 +230,23 @@ public class MorseInput : MonoBehaviour {
 		}
 		dotPool.pooledObjects[result.Length - 1].GetComponent<Image>().enabled = true;
 
-		morseAudioSource.Stop();
+		StartCoroutine(VolumeFade(morseAudioSource, 0f, 0.1f));
+	}
+
+	IEnumerator VolumeFade(AudioSource audioSourceInput, float endVolume, float timeLength) {
+
+		float startVolume = audioSourceInput.volume;
+		float startTime = Time.time;
+
+		while (Time.time < startTime + timeLength) {
+			audioSourceInput.volume = startVolume + ((endVolume - startVolume) * (Time.time - startTime) / timeLength);
+			
+			yield return null;
+		}
+
+		if (endVolume == 0f) {
+			audioSourceInput.Stop();
+		}
 	}
 
 	private void Update () {
@@ -247,7 +265,8 @@ public class MorseInput : MonoBehaviour {
 		}
 		
 		if (Input.GetButtonDown("Action") == true) {
-
+			StopAllCoroutines();
+			morseAudioSource.volume = morseAudioSourceDefaultVolume;
 			morseAudioSource.Play();
 		}
 
