@@ -64,8 +64,7 @@ public class MorseInput : MonoBehaviour {
 	private float buttonHeldTime;
 
 	private string result = "";
-
-	private Text LetterResultText;
+	
 	private GameObject needleGameObject;
 	private Vector2 needleStartPosition;
 	private FlashEntity needleFlashEntity;
@@ -77,8 +76,7 @@ public class MorseInput : MonoBehaviour {
 	private void Start() {
 		morseAudioSource = GetComponent<AudioSource>();
 		morseAudioSourceDefaultVolume = morseAudioSource.volume;
-
-		LetterResultText = transform.Find("LetterResult").GetComponent<Text>();
+		
 		needleGameObject = transform.Find("Needle").gameObject;
 		needleStartPosition = needleGameObject.GetComponent<RectTransform>().anchoredPosition;
 		needleFlashEntity = needleGameObject.GetComponent<FlashEntity>();
@@ -109,48 +107,48 @@ public class MorseInput : MonoBehaviour {
 
 				if (i == 0) {
 
-					LetterResultText.text = "0";
+					//LetterResultText.text = "0";
 					break;
 				}
 				else if (i == 1) {
 
-					LetterResultText.text = "1";
+					//LetterResultText.text = "1";
 					break;
 				}
 				else if (i == 2) {
-					LetterResultText.text = "2";
+					//LetterResultText.text = "2";
 					break;
 				}
 				else if (i == 3) {
-					LetterResultText.text = "3";
+					//LetterResultText.text = "3";
 					break;
 				}
 				else if (i == 4) {
-					LetterResultText.text = "4";
+					//LetterResultText.text = "4";
 					break;
 				}
 				else if (i == 5) {
-					LetterResultText.text = "5";
+					//LetterResultText.text = "5";
 					break;
 				}
 				else if (i == 6) {
-					LetterResultText.text = "6";
+					//LetterResultText.text = "6";
 					break;
 				}
 				else if (i == 7) {
-					LetterResultText.text = "7";
+					//LetterResultText.text = "7";
 					break;
 				}
 				else if (i == 8) {
-					LetterResultText.text = "8";
+					//LetterResultText.text = "8";
 					break;
 				}
 				else if (i == 9) {
-					LetterResultText.text = "9";
+					//LetterResultText.text = "9";
 					break;
 				}
 				else if (i == 10) {
-					LetterResultText.text = "N";
+					//LetterResultText.text = "N";
 
 					for (int j = 0; j < GameManager.players.Count; j += 1) {
 						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(0f, 1f));
@@ -158,7 +156,7 @@ public class MorseInput : MonoBehaviour {
 					break;
 				}
 				else if (i == 11) {
-					LetterResultText.text = "S";
+					//LetterResultText.text = "S";
 
 					for (int j = 0; j < GameManager.players.Count; j += 1) {
 						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(0f, -1f));
@@ -166,7 +164,7 @@ public class MorseInput : MonoBehaviour {
 					break;
 				}
 				else if (i == 12) {
-					LetterResultText.text = "E";
+					//LetterResultText.text = "E";
 
 					for (int j = 0; j < GameManager.players.Count; j += 1) {
 						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(1f, 0f));
@@ -174,7 +172,7 @@ public class MorseInput : MonoBehaviour {
 					break;
 				}
 				else if (i == 13) {
-					LetterResultText.text = "W";
+					//LetterResultText.text = "W";
 
 					for (int j = 0; j < GameManager.players.Count; j += 1) {
 						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(-1f, 0f));
@@ -182,7 +180,7 @@ public class MorseInput : MonoBehaviour {
 					break;
 				}
 				else if (i == 14) {
-					LetterResultText.text = "U";
+					//LetterResultText.text = "U";
 					break;
 				}
 			}
