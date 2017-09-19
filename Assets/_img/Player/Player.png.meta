@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0b9bf988ce01cfe4199adad7ba8481b3
-timeCreated: 1505007685
+timeCreated: 1505839139
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -23,6 +23,25 @@ TextureImporter:
     21300032: Player_DashAir_0
     21300034: Player_DashAir_1
     21300036: Player_MidAir_R_0
+    21300038: Player 0
+    21300040: Player 1
+    21300042: Player 2
+    21300044: Player 3
+    21300046: Player 4
+    21300048: Player 5
+    21300050: Player 6
+    21300052: Player 7
+    21300054: Player 8
+    21300056: Player 9
+    21300058: Player 10
+    21300060: Player 11
+    21300062: Player 12
+    21300064: Player 13
+    21300066: Player 14
+    21300068: Player 15
+    21300070: Player 16
+    21300072: Player 17
+    21300074: Player 18
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -110,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Idle_R_0
+      name: Player 0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 208
-        width: 33
-        height: 30
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,13 +143,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Idle_R_1
+      name: Player 1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 208
-        width: 33
-        height: 31
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,13 +157,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Idle_R_2
+      name: Player 2
       rect:
         serializedVersion: 2
-        x: 148
-        y: 208
-        width: 33
-        height: 30
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,13 +171,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Run_R_0
+      name: Player 3
       rect:
         serializedVersion: 2
-        x: 208
-        y: 213
-        width: 37
-        height: 26
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,13 +185,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Run_R_1
+      name: Player 4
       rect:
         serializedVersion: 2
-        x: 276
-        y: 208
-        width: 33
-        height: 30
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,13 +199,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Run_R_2
+      name: Player 5
       rect:
         serializedVersion: 2
-        x: 339
-        y: 213
-        width: 34
-        height: 26
+        x: 320
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,13 +213,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Run_R_3
+      name: Player 6
       rect:
         serializedVersion: 2
-        x: 404
-        y: 208
-        width: 33
-        height: 30
+        x: 384
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,13 +227,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Fly_0
+      name: Player 7
       rect:
         serializedVersion: 2
-        x: 470
-        y: 208
-        width: 20
-        height: 32
+        x: 448
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,13 +241,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Fly_1
+      name: Player 8
       rect:
         serializedVersion: 2
-        x: 22
-        y: 144
-        width: 20
-        height: 31
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,13 +255,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Fly_2
+      name: Player 9
       rect:
         serializedVersion: 2
-        x: 86
-        y: 144
-        width: 20
-        height: 32
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,13 +269,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Fly_3
+      name: Player 10
       rect:
         serializedVersion: 2
-        x: 150
-        y: 144
-        width: 20
-        height: 31
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,13 +283,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_DeadFly_0
+      name: Player 11
       rect:
         serializedVersion: 2
-        x: 210
-        y: 144
-        width: 30
-        height: 22
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,13 +297,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_DeadFly_1
+      name: Player 12
       rect:
         serializedVersion: 2
-        x: 274
-        y: 144
-        width: 32
-        height: 21
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,13 +311,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Death_0
+      name: Player 13
       rect:
         serializedVersion: 2
-        x: 336
-        y: 143
-        width: 37
-        height: 13
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,13 +325,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Dash_R_0
+      name: Player 14
       rect:
         serializedVersion: 2
-        x: 400
-        y: 144
-        width: 30
-        height: 19
+        x: 384
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,13 +339,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_Dash_R_1
+      name: Player 15
       rect:
         serializedVersion: 2
-        x: 464
-        y: 144
-        width: 30
-        height: 19
+        x: 448
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,13 +353,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_DashAir_0
+      name: Player 16
       rect:
         serializedVersion: 2
-        x: 17
-        y: 80
-        width: 35
-        height: 32
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,13 +367,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_DashAir_1
+      name: Player 17
       rect:
         serializedVersion: 2
-        x: 81
-        y: 80
-        width: 38
-        height: 32
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,13 +381,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: Player_MidAir_R_0
+      name: Player 18
       rect:
         serializedVersion: 2
-        x: 143
-        y: 80
-        width: 37
-        height: 30
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

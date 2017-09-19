@@ -106,12 +106,10 @@ public class MorseInput : MonoBehaviour {
 			if (ariseAlphabet[i] == command) {
 
 				if (i == 0) {
-
 					//LetterResultText.text = "0";
 					break;
 				}
 				else if (i == 1) {
-
 					//LetterResultText.text = "1";
 					break;
 				}
