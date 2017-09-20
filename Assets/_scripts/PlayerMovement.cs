@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public Vector3 targetPos;
+	public float movementImpulse;
 
 	private Transform myTransform;
+	private Rigidbody myRigidbody;
 	private void Start () {
 
 		myTransform = transform;
-
-		targetPos = myTransform.position;
+		
+		myRigidbody = GetComponent<Rigidbody>();
 	}
-
+	/*
 	public void PositionPlayer(Vector3 newPos) {
 
 		targetPos = newPos;
@@ -32,11 +33,26 @@ public class PlayerMovement : MonoBehaviour {
 			targetPos = targetPos + translate;
 		}
 	}
+	*/
+	/*
+private void Update () {
+	if (Vector3.Distance(myTransform.position, targetPos) > Mathf.Epsilon) {
 
-	private void Update () {
-		if (Vector3.Distance(myTransform.position, targetPos) > Mathf.Epsilon) {
+		myTransform.position = Vector3.Lerp(myTransform.position, targetPos, 0.5f);
+	}
 
-			myTransform.position = Vector3.Lerp(myTransform.position, targetPos, 0.5f);
+}
+	*/
+
+	private void FixedUpdate() {
+		float h = Input.GetAxisRaw("Horizontal");
+		float v = Input.GetAxisRaw("Vertical");
+		if (h != 0) {
+			myRigidbody.AddForce(Vector3.right * h * movementImpulse, ForceMode.Impulse);
+		}
+
+		if (v != 0) {
+			myRigidbody.AddForce(Vector3.up * v * movementImpulse, ForceMode.Impulse);
 		}
 	}
 }

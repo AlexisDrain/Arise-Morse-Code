@@ -12,8 +12,7 @@ public class ExitController : MonoBehaviour {
 		
 		if (other.tag == "Player") {
 			
-			GameManager.playerExitLocationInCamera = thisLocationInCamera;
-			SceneManager.LoadScene(goToScene);
+			GameManager.gameManagerGameObject.GetComponent<GameManager>().LoadNewScene(goToScene, thisLocationInCamera);
 		}
 	}
 }

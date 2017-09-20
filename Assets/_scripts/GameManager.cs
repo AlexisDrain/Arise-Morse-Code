@@ -8,9 +8,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject dot;
 	public GameObject dash;
-
-	public static string playerExitLocationInCamera;
-
+	
 	public static int wallsLayerMask;
 	public static int usableWallLayerMask;
 	
@@ -38,8 +36,6 @@ public class GameManager : MonoBehaviour {
 				players.Add(playersArray[i]);
 			}
 		}
-
-		SceneManager.sceneLoaded += RepositionPlayerInNewScene;
 	}
 	public void Update() {
 		newTurnTimer -= Time.deltaTime;
@@ -49,36 +45,44 @@ public class GameManager : MonoBehaviour {
 			onNewTurn.Invoke();
 		}
 	}
-	//public void RepositionPlayerInNewScene(string enteranceLocationInCamera) {
-	public void RepositionPlayerInNewScene(Scene scene, LoadSceneMode mode) {
+	public void LoadNewScene(string levelName, string exitCamLocation) {
+		
+		SceneManager.LoadScene(levelName);
+		RepositionPlayerInNewScene(exitCamLocation);
+	}
+	public void RepositionPlayerInNewScene(string previousExitCamLocation) {
 
 		GameObject[] exitsArray = GameObject.FindGameObjectsWithTag("Exit");
 		string enteranceLocation = "";
 
 		Vector3 playerOffset = new Vector3(0f, 0f);
-		if (playerExitLocationInCamera == "Top") {
+		if (previousExitCamLocation == "Top") {
 			enteranceLocation = "Bottom";
 			playerOffset = new Vector3(0f, 2f);
-		} else if (playerExitLocationInCamera == "Bottom") {
+		} else if (previousExitCamLocation == "Bottom") {
 			enteranceLocation = "Top";
 			playerOffset = new Vector3(0f, -2f);
 		}
-		else if (playerExitLocationInCamera == "Left") {
+		else if (previousExitCamLocation == "Left") {
 			enteranceLocation = "Right";
 			playerOffset = new Vector3(-2f, 0f);
 		}
-		else if (playerExitLocationInCamera == "Right") {
+		else if (previousExitCamLocation == "Right") {
 			enteranceLocation = "Left";
 			playerOffset = new Vector3(2f, 0f);
 		}
 
 		for (int i = 0; i < exitsArray.Length; i += 1) {
 			if (exitsArray[i].GetComponent<ExitController>().thisLocationInCamera == enteranceLocation) {
-				
-				GameManager.players[0].GetComponent<PlayerMovement>().PositionPlayer(exitsArray[i].transform.position + playerOffset);
+
+				Vector3 resetPos = new Vector3(exitsArray[i].transform.position.x, exitsArray[i].transform.position.y, 0f) + playerOffset;
+				GameManager.players[0].transform.position = resetPos;
+				//GameManager.players[0].GetComponent<PlayerMovement>().PositionPlayer(exitsArray[i].transform.position + playerOffset);
 				return;
 			}
 		}
+
+		players[0].transform.Find("Trail").GetComponent<TrailRenderer>().Clear();
 	}
 
 

@@ -147,34 +147,26 @@ public class MorseInput : MonoBehaviour {
 				}
 				else if (i == 10) {
 					//LetterResultText.text = "N";
-
-					for (int j = 0; j < GameManager.players.Count; j += 1) {
-						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(0f, 1f));
-					}
+					
 					break;
 				}
 				else if (i == 11) {
 					//LetterResultText.text = "S";
-
-					for (int j = 0; j < GameManager.players.Count; j += 1) {
-						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(0f, -1f));
-					}
+					
 					break;
 				}
 				else if (i == 12) {
 					//LetterResultText.text = "E";
-
-					for (int j = 0; j < GameManager.players.Count; j += 1) {
-						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(1f, 0f));
-					}
+					
 					break;
 				}
 				else if (i == 13) {
 					//LetterResultText.text = "W";
-
+					/*
 					for (int j = 0; j < GameManager.players.Count; j += 1) {
 						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(-1f, 0f));
 					}
+					*/
 					break;
 				}
 				else if (i == 14) {
@@ -278,7 +270,7 @@ public class MorseInput : MonoBehaviour {
 			EnterCommand(result);
 		}
 
-		if (result.Length > 0 && commandEndTimer > 1.2f) {
+		if (result.Length > 0 && commandEndTimer > 0.4f) {
 			EnterCommand(result);
 		}
 	}
