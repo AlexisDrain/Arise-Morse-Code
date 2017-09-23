@@ -45,8 +45,8 @@ private void Update () {
 	*/
 
 	private void FixedUpdate() {
-		float h = Input.GetAxisRaw("Horizontal");
-		float v = Input.GetAxisRaw("Vertical");
+		float h = hardInput.GetAxis("KeyRight", "KeyLeft") + Input.GetAxis("Horizontal");
+		float v = hardInput.GetAxis("KeyUp", "KeyDown") + Input.GetAxis("Vertical") + hardInput.GetAxis("PadUp", "PadDown");
 		if (h != 0) {
 			myRigidbody.AddForce(Vector3.right * h * movementImpulse, ForceMode.Impulse);
 		}

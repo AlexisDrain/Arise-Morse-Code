@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class DisplayCommandCharacters : MonoBehaviour {
 	
-	public int morseIndex;
-	
+	//public string ariseInput = "-.";
+	public string morseInput = ".-";
+
 	private void Start () {
 
 		GameObject temp;
+		Transform dashDotTrans = transform.Find("DashDot");
 
-		string command = GameManager.interpreter.GetComponent<MorseInput>().ariseAlphabet[morseIndex];
+		for (int i = 0; i < morseInput.Length; i += 1) {
 
-		for (int i = 0; i < command.Length; i += 1) {
-
-			if (command[i].ToString() == ".") {
+			if (morseInput[i].ToString() == ".") {
 
 				temp = GameObject.Instantiate(GameManager.gameManagerGameObject.GetComponent<GameManager>().dot);
 
-				temp.transform.SetParent(transform);
+				temp.transform.SetParent(dashDotTrans);
 				//temp.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
 				temp.GetComponent<RectTransform>().sizeDelta = new Vector2(10f, 10f);
 				temp.GetComponent<RectTransform>().anchorMin = new Vector2(1f, 1f);
@@ -29,7 +29,7 @@ public class DisplayCommandCharacters : MonoBehaviour {
 
 				temp = GameObject.Instantiate(GameManager.gameManagerGameObject.GetComponent<GameManager>().dash);
 
-				temp.transform.SetParent(transform);
+				temp.transform.SetParent(dashDotTrans);
 				//temp.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
 				temp.GetComponent<RectTransform>().sizeDelta = new Vector2(20f, 10f);
 				temp.GetComponent<RectTransform>().anchorMin = new Vector2(1f, 1f);
