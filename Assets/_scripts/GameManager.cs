@@ -14,75 +14,90 @@ public class GameManager : MonoBehaviour {
 	
 	public static GameObject gameManagerGameObject;
 	public static GameObject interpreter;
-	public static List<GameObject> players = new List<GameObject>();
+	public static GameObject player;
+	private TrailRenderer playerTrail;
 
-	public static UnityEvent onNewTurn = new UnityEvent();
-	private float newTurnTimerDefault = 3f;
-	private float newTurnTimer = 3f;
-
+	public static UnityEvent onSceneLoad = new UnityEvent();
+	private string previousSceneName;
+	private Vector3 playerGroundOffset;
 
 	private void Awake () {
+		
+		if (gameManagerGameObject != null) {
+			return;
+		}
 
 		wallsLayerMask = LayerMask.NameToLayer("Walls");
 		usableWallLayerMask = LayerMask.NameToLayer("UsableWall");
-
+		
 		gameManagerGameObject = gameObject;
 		interpreter = GameObject.Find("Interpreter");
-		
-		GameObject[] playersArray = GameObject.FindGameObjectsWithTag("Player");
-		
-		for (int i = 0; i < playersArray.Length; i += 1) {
-			if (playersArray[i]) {
-				players.Add(playersArray[i]);
-			}
-		}
-	}
-	public void Update() {
-		newTurnTimer -= Time.deltaTime;
 
-		if (newTurnTimer <= 0) {
-			newTurnTimer = newTurnTimerDefault;
-			onNewTurn.Invoke();
+		player = GameObject.Find("Player");
+		playerTrail = player.transform.Find("Trail").GetComponent<TrailRenderer>();
+
+		playerGroundOffset = new Vector3(0f, player.transform.position.y, 0f);
+
+		SceneManager.sceneLoaded += OldLevelNotNeeded;
+		SceneManager.sceneUnloaded += PositionPlayerInNewLevel;
+	}
+
+
+	private string exitCamLocation;
+
+	public void LoadNewScene(string levelName, string argExitCamLocation) {
+
+		playerGroundOffset = new Vector3(0f, player.transform.position.y, 0f);
+		previousSceneName = SceneManager.GetActiveScene().name;
+
+		SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
+		exitCamLocation = argExitCamLocation;
+	}
+
+	private void OldLevelNotNeeded(Scene arg0, LoadSceneMode arg1) {
+		
+		if (previousSceneName != null) {
+			SceneManager.UnloadSceneAsync(previousSceneName);
 		}
 	}
-	public void LoadNewScene(string levelName, string exitCamLocation) {
-		
-		SceneManager.LoadScene(levelName);
+	private void PositionPlayerInNewLevel(Scene arg0) {
 		RepositionPlayerInNewScene(exitCamLocation);
 	}
+
+
 	public void RepositionPlayerInNewScene(string previousExitCamLocation) {
 
 		GameObject[] exitsArray = GameObject.FindGameObjectsWithTag("Exit");
 		string enteranceLocation = "";
-
 		Vector3 playerOffset = new Vector3(0f, 0f);
+
 		if (previousExitCamLocation == "Top") {
 			enteranceLocation = "Bottom";
-			playerOffset = new Vector3(0f, 2f);
+			playerOffset = new Vector3(0f, 0f, 2f);
 		} else if (previousExitCamLocation == "Bottom") {
 			enteranceLocation = "Top";
-			playerOffset = new Vector3(0f, -2f);
+			playerOffset = new Vector3(0f, 0f, -2f);
 		}
 		else if (previousExitCamLocation == "Left") {
 			enteranceLocation = "Right";
-			playerOffset = new Vector3(-2f, 0f);
+			playerOffset = new Vector3(-2f, 0f, 0f);
 		}
 		else if (previousExitCamLocation == "Right") {
 			enteranceLocation = "Left";
-			playerOffset = new Vector3(2f, 0f);
+			playerOffset = new Vector3(2f, 0f, 0f);
 		}
 
 		for (int i = 0; i < exitsArray.Length; i += 1) {
 			if (exitsArray[i].GetComponent<ExitController>().thisLocationInCamera == enteranceLocation) {
 
-				Vector3 resetPos = new Vector3(exitsArray[i].transform.position.x, exitsArray[i].transform.position.y, 0f) + playerOffset;
-				GameManager.players[0].transform.position = resetPos;
-				//GameManager.players[0].GetComponent<PlayerMovement>().PositionPlayer(exitsArray[i].transform.position + playerOffset);
+				Vector3 resetPos = new Vector3(exitsArray[i].transform.position.x, 0f, exitsArray[i].transform.position.z) + playerOffset + playerGroundOffset;
+				player.transform.position = resetPos;
+
+				playerTrail.Clear();
 				return;
 			}
 		}
 
-		players[0].transform.Find("Trail").GetComponent<TrailRenderer>().Clear();
 	}
 
 

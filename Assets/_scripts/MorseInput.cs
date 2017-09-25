@@ -4,58 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MorseInput : MonoBehaviour {
-
-	// Arise alphabet
-	// 0 1 2 3 4 5 6 7 8 9
-	// N S E W
-	// U
-	// H
-
-	/* International Morse Code
-
-		A .-
-		B -...
-		C -.-.
-		D -..
-		E .
-		F ..-.
-		G --.
-		H ....
-		I ..
-		J .---
-		K -.-
-		L .-..
-		M --
-		N -.
-		O ---
-		P .--.
-		Q --.-
-		R .-.
-		S ...
-		T -
-		U ..-
-		V ...-
-		W .--
-		X -..-
-		Y -.--
-		Z --..
-
-		0 .----
-		1 ..---
-		2 ...--
-		3 ....-
-		4 .....
-		5 -....
-		6 --...
-		7 ---..
-		8 ----.
-		9 -----
-
-	*/
-
-	// also Input.GetButtonDown("SubmitPremature") for entering morse quickly
-
-	public List<string> ariseAlphabet;
+	
 	public Sprite dotImg;
 	public Sprite dashImg;
 
@@ -64,7 +13,8 @@ public class MorseInput : MonoBehaviour {
 	private float buttonHeldTime;
 
 	private string result = "";
-	
+
+	private Transform listOfMorseTransform;
 	private GameObject needleGameObject;
 	private Vector2 needleStartPosition;
 	private FlashEntity needleFlashEntity;
@@ -76,7 +26,8 @@ public class MorseInput : MonoBehaviour {
 	private void Start() {
 		morseAudioSource = GetComponent<AudioSource>();
 		morseAudioSourceDefaultVolume = morseAudioSource.volume;
-		
+
+		listOfMorseTransform = GameObject.Find("ListOfMorse").transform;
 		needleGameObject = transform.Find("Needle").gameObject;
 		needleStartPosition = needleGameObject.GetComponent<RectTransform>().anchoredPosition;
 		needleFlashEntity = needleGameObject.GetComponent<FlashEntity>();
@@ -101,78 +52,11 @@ public class MorseInput : MonoBehaviour {
 		
 		EmptyVisualField();
 
-
-		for (int i = 0; i < ariseAlphabet.Count; i += 1) {
-			if (ariseAlphabet[i] == command) {
-
-				if (i == 0) {
-					//LetterResultText.text = "0";
-					break;
-				}
-				else if (i == 1) {
-					//LetterResultText.text = "1";
-					break;
-				}
-				else if (i == 2) {
-					//LetterResultText.text = "2";
-					break;
-				}
-				else if (i == 3) {
-					//LetterResultText.text = "3";
-					break;
-				}
-				else if (i == 4) {
-					//LetterResultText.text = "4";
-					break;
-				}
-				else if (i == 5) {
-					//LetterResultText.text = "5";
-					break;
-				}
-				else if (i == 6) {
-					//LetterResultText.text = "6";
-					break;
-				}
-				else if (i == 7) {
-					//LetterResultText.text = "7";
-					break;
-				}
-				else if (i == 8) {
-					//LetterResultText.text = "8";
-					break;
-				}
-				else if (i == 9) {
-					//LetterResultText.text = "9";
-					break;
-				}
-				else if (i == 10) {
-					//LetterResultText.text = "N";
-					
-					break;
-				}
-				else if (i == 11) {
-					//LetterResultText.text = "S";
-					
-					break;
-				}
-				else if (i == 12) {
-					//LetterResultText.text = "E";
-					
-					break;
-				}
-				else if (i == 13) {
-					//LetterResultText.text = "W";
-					/*
-					for (int j = 0; j < GameManager.players.Count; j += 1) {
-						GameManager.players[j].GetComponent<PlayerMovement>().TranslatePlayer(new Vector3(-1f, 0f));
-					}
-					*/
-					break;
-				}
-				else if (i == 14) {
-					//LetterResultText.text = "U";
-					break;
-				}
+		DisplayCommandCharacters[] childrenCommands = listOfMorseTransform.GetComponentsInChildren<DisplayCommandCharacters>();
+		
+		for (int i = 0; i < childrenCommands.Length; i += 1) {
+			if (childrenCommands[i].morseInput == command) {
+				childrenCommands[i].UseCommand();
 			}
 		}
 

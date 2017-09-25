@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4509028342007126}
   - component: {fileID: 20055047349730096}
   - component: {fileID: 114163004460934660}
-  - component: {fileID: 114486121592676900}
   m_Layer: 0
   m_Name: Camera DoubleVision
   m_TagString: MainCamera
@@ -75,15 +74,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241256254667798}
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -13.24, z: -15.74}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 15.2, z: -15.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4509028342007126}
   - {fileID: 4910063866519002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!4 &4509028342007126
 Transform:
   m_ObjectHideFlags: 1
@@ -283,18 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insureTheresOnlyOne: 1
---- !u!114 &114486121592676900
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284821051916874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aeeaee2e0091f6488b1962e95c261e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  insureTheresOnlyOne: 0
 --- !u!114 &114580315157702832
 MonoBehaviour:
   m_ObjectHideFlags: 1

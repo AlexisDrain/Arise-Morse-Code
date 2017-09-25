@@ -48,16 +48,6 @@ public class DoorController : MonoBehaviour {
 	private void CloseDoor() {
 		open = false;
 	}
-	private void OnEnable () {
-
-		GameManager.onNewTurn.AddListener(OnNewTurn);
-	}
-
-	private void OnDisable() {
-
-		GameManager.onNewTurn.RemoveListener(OnNewTurn);
-
-	}
 
 	private void Update() {
 		if (Vector3.Distance(myTransform.position, targetPos) > Mathf.Epsilon) {

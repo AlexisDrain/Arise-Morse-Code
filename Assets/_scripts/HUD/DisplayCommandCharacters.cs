@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DisplayCommandCharacters : MonoBehaviour {
 	
-	//public string ariseInput = "-.";
 	public string morseInput = ".-";
+
+	public UnityEvent onCommandUse;
+
+	public void UseCommand () {
+		onCommandUse.Invoke();
+	}
 
 	private void Start () {
 
