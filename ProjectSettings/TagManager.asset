@@ -17,8 +17,8 @@ TagManager:
   - InteractiveWalkable
   - Walls
   - UsableWall
-  - 
-  - 
+  - Bullet
+  - Actors
   - 
   - 
   - 

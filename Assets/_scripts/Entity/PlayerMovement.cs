@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	public Vector2 direction = new Vector2(1f, 0f);
+	public Vector3 throwDirection = new Vector3(1f, 0f, 0f);
 	public float movementImpulse;
 	
 	private Rigidbody myRigidbody;
@@ -33,11 +34,13 @@ public class PlayerMovement : MonoBehaviour {
 			myRigidbody.AddForce(Vector3.forward * v * movementImpulse, ForceMode.Impulse);
 			
 			direction = new Vector2(0f, v);
+			throwDirection = new Vector3(0f, 0f, v);
 		}
 		if (h != 0) {
 			myRigidbody.AddForce(Vector3.right * h * movementImpulse, ForceMode.Impulse);
 
 			direction = new Vector2(h, 0f);
+			throwDirection = new Vector2(h, 0f);
 
 			transform.Find("Trail").GetComponent<TrailRenderer>().Clear();
 		}
