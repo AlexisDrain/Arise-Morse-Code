@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class DialogueText : MonoBehaviour {
 
 	public float removeSelfTimer = 15f;
-	public float letterCountdown = 0.1f;
+	public float letterCountdown = 0.08f;
 	[TextArea(3, 10)]
 	public string dialogueText;
+	private string originalTextWithTags;
 
 	private bool imageIsTalking = false;
 	private float punctuationPauseCountdown = 0f;
 	private bool isWritingDialogue = false;
 	private float internalLetterTimer;
 	private int currentIndex;
-	
 
+	private void Start() {
+		StartDialogueScene();
+	}
 	private void Update () {
 		if (isWritingDialogue == false) {
 			return;
@@ -50,8 +53,7 @@ public class DialogueText : MonoBehaviour {
 		internalLetterTimer = 0;
 		GetComponent<Text>().text = "";
 		isWritingDialogue = true;
-
-		transform.parent.GetComponent<EntityFade>().StartFadeIn();
+		originalTextWithTags = dialogueText;
 	} 
 	private void DisplayFirstLetter () {
 
@@ -60,40 +62,71 @@ public class DialogueText : MonoBehaviour {
 				//print ();
 			}
 		}
-		/*
+
 		if (dialogueText.StartsWith(",")) {
+			punctuationPauseCountdown = 0.5f;
+			imageIsTalking = false;
+		}
+		else if (dialogueText.StartsWith(";")) {
+		
+			punctuationPauseCountdown = 0.5f;
+			imageIsTalking = false;
+		}
+		else if (dialogueText.StartsWith("?!")) {
+
+			GetComponent<Text>().text = GetComponent<Text>().text + dialogueText[0] + dialogueText[1];
+			dialogueText = dialogueText.Remove(0, 2);
+			punctuationPauseCountdown = 1f;
+			imageIsTalking = false;
+
+			return;
+
+		}
+		else if (dialogueText.StartsWith("!")) {
+		
 			punctuationPauseCountdown = 1f;
 			imageIsTalking = false;
 		}
-		if (dialogueText.StartsWith(";")) {
+		else if (dialogueText.StartsWith("?")) {
 		
 			punctuationPauseCountdown = 1f;
 			imageIsTalking = false;
 		}
-		if (dialogueText.StartsWith("!")) {
-		
-			punctuationPauseCountdown = 2f;
-			imageIsTalking = false;
-		}
-		if (dialogueText.StartsWith("?")) {
-		
-			punctuationPauseCountdown = 2f;
-			imageIsTalking = false;
-		}
-		if (dialogueText.StartsWith(".")) {
-			punctuationPauseCountdown = 1.5f;
+		else if (dialogueText.StartsWith(".")) {
+			punctuationPauseCountdown = 1f;
 			
 			imageIsTalking = false;
 		}
-		if (dialogueText.StartsWith("[wait=")) {
-		
-			punctuationPauseCountdown = ;
-			imageIsTalking = false;
+		/*
+		if (dialogueText.StartsWith("<Color=red>")) {
+
+			for (int i = 0; i < "<Color=red>".Length; i+= 1) {
+
+				GetComponent<Text>().text = GetComponent<Text>().text + dialogueText[i];
+			}
+			dialogueText = dialogueText.Remove(0, "<Color=red>".Length);
 		}
-		if (dialogueText.StartsWith("[lcd=")) {
-		
-			letterCountdown = 0.1f;
+		if (dialogueText.StartsWith("</Color>")) {
+
 		}
+		*/
+		if (GetComponent<Text>().text.Contains("/") == true && GetComponent<Text>().text.Contains("\\") == true) {
+
+			GetComponent<Text>().text = GetComponent<Text>().text.Replace("/", "<Color=red>");
+			GetComponent<Text>().text = GetComponent<Text>().text.Replace("\\", "</Color>");
+		}
+
+		//if (dialogueText.StartsWith("[wait=")) {
+		//
+		//	punctuationPauseCountdown = ;
+		//	imageIsTalking = false;
+		//}
+
+		//if (dialogueText.StartsWith("[lcd=")) {
+		//
+		//	letterCountdown = 0.1f;
+		//}
+		/*
 		if (dialogueText.StartsWith("[snd=")) {
 			GetComponent<AudioSource>().PlayOneShot();
 		}
@@ -104,7 +137,7 @@ public class DialogueText : MonoBehaviour {
 
 		imageIsTalking = true;
 		currentIndex += 1;
-		if (currentIndex % 2 == 0) {
+		if (currentIndex % 2 == 0 && currentIndex < 10) {
 			GetComponent<AudioSource>().Play();
 		}
 	}

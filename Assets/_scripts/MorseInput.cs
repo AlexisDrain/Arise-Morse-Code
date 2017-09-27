@@ -9,7 +9,6 @@ public class MorseInput : MonoBehaviour {
 	public Sprite dashImg;
 
 	private float commandEndTimer;
-
 	private float buttonHeldTime;
 
 	private string result = "";
@@ -137,17 +136,20 @@ public class MorseInput : MonoBehaviour {
 		}
 		
 		if (hardInput.GetKeyDown("KeyMorse") == true || hardInput.GetKeyDown("PadMorse")) {
+
 			StopAllCoroutines();
 			morseAudioSource.volume = morseAudioSourceDefaultVolume;
 			morseAudioSource.Play();
 		}
 
 		if (hardInput.GetKeyUp("KeyMorse") == true || hardInput.GetKeyUp("PadMorse")) {
+				
 			EnterCharacter();
 			needleFlashEntity.StartTimer();
+			buttonHeldTime = 0;
 		}
-
-		if (result.Length > 0 && commandEndTimer > 0.4f) {
+		
+		if (result.Length > 0 && commandEndTimer > 0.3f) {
 			EnterCommand(result);
 		}
 	}

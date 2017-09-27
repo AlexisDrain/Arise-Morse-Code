@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33397803687574524}
   - component: {fileID: 65354622618411666}
   - component: {fileID: 23428614879577456}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: RoomScaleGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}

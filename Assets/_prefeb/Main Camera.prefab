@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114580315157702832}
   - component: {fileID: 114168297876914616}
   - component: {fileID: 114747745404789424}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4509028342007126}
   - component: {fileID: 20055047349730096}
   - component: {fileID: 114163004460934660}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Camera DoubleVision
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 33126682578998716}
   - component: {fileID: 64866399289944156}
   - component: {fileID: 23085431645145380}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DoubleVisionPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
