@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 6a7df1d1ccffd0043af75e6307b1c99d
+timeCreated: 1506557223
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Arabic Pixel 2 Beta Version
+  fontNames:
+  - Arabic Pixel 2 Beta Version
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
