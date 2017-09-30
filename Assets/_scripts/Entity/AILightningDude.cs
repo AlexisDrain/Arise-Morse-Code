@@ -10,12 +10,13 @@ public class AILightningDude : MonoBehaviour {
 	private bool noticedPlayer = false;
 	private bool playerWithinSight = false;
 
-	//private Transform myTransform;
+	private Transform myTransform;
+	private SpriteRenderer mySpriteRenderer;
 
 	private void Start () {
 
-		//myTransform = transform;
-		
+		myTransform = transform;
+		mySpriteRenderer = myTransform.Find("Img").GetComponent<SpriteRenderer>();
 		//GetComponent<NavMeshAgent>().SetDestination(targetPos);
 	}
 	
@@ -25,7 +26,21 @@ public class AILightningDude : MonoBehaviour {
 			GetComponent<NavMeshAgent>().SetDestination(targetPos);
 		}
 
-		Physics.Raycast(transform.position, GameManager.player.transform.position);
+		RaycastHit hit;
+		Physics.Raycast(transform.position, GameManager.playerTransform.position, out hit);
+
+		if (hit.collider && hit.collider.tag == "Player") {
+			noticedPlayer = true;
+			playerWithinSight = true;
+		}
+
+		if (playerWithinSight == true) {
+			if (GameManager.playerTransform.position.x < myTransform.position.x) {
+				mySpriteRenderer.flipX = true;
+			} else {
+				mySpriteRenderer.flipX = false;
+			}
+		}
 	}
 	
 }

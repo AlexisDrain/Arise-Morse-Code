@@ -1,43 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerMovement : MonoBehaviour {
 
+	public RuntimeAnimatorController playerRight;
+	public AnimatorOverrideController playerUp;
+	public AnimatorOverrideController playerDown;
+	public AnimatorOverrideController playerLeft;
+	private Vector2 currentDirection;
+
 	public Vector2 direction = new Vector2(1f, 0f);
-	public Vector3 throwDirection = new Vector3(1f, 0f, 0f);
 	public float movementImpulse;
 	
 	private Rigidbody myRigidbody;
-	private TrailRenderer myTrailRenderer;
+	private Animator myAnimator;
 
 	private void Start () {
 		
 		myRigidbody = GetComponent<Rigidbody>();
-		myTrailRenderer = GetComponent<TrailRenderer>();
+		myAnimator = transform.Find("Img").GetComponent<Animator>();
 	}
-
-	// unity will reset our keys on level change. So workaround:
-	private bool keyRightIsPressed = false;
 
 	private void FixedUpdate() {
 		float h = Mathf.Clamp(Input.GetAxis("Horizontal") + hardInput.GetAxis("PadLeft", "PadRight"), -1, 1);
 		float v = Mathf.Clamp(Input.GetAxis("Vertical") + hardInput.GetAxis("PadUp", "PadDown"), -1, 1);
 
 		Vector3 movementNormalized = new Vector3(h, 0, v).normalized;
-
-		if (Input.GetKeyDown("right")) {
-			keyRightIsPressed = true;
-		} else if (Input.GetKeyUp("right")) {
-			keyRightIsPressed = false;
-		}
+		
 
 		if (v != 0 || h != 0) {
 			myRigidbody.AddForce(movementNormalized * movementImpulse, ForceMode.Impulse);
-			
-			direction = new Vector2(h, v);
-			throwDirection = new Vector3(h, 0f, v);
+
+			myAnimator.SetBool("IsMoving", true);
+
+			currentDirection = new Vector2(h, v);
+		} else {
+
+			myAnimator.SetBool("IsMoving", false);
 		}
+
+		if (direction != currentDirection) {
+			direction = currentDirection;
+
+			// set new Animation Controller
+			if (h > 0) {
+				myAnimator.runtimeAnimatorController = playerRight;
+			}
+			else if (h < 0) {
+				myAnimator.runtimeAnimatorController = playerLeft;
+			}
+			else if (v > 0) {
+				myAnimator.runtimeAnimatorController = playerUp;
+			}
+			else if (v < 0) {
+				myAnimator.runtimeAnimatorController = playerDown;
+			}
+		}
+
 		/*
 		if (h != 0) {
 			myRigidbody.AddForce(Vector3.right * h * movementImpulse, ForceMode.Impulse);

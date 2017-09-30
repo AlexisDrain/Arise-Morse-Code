@@ -9,7 +9,6 @@ public class DialogueText : MonoBehaviour {
 	public float letterCountdown = 0.08f;
 	[TextArea(3, 10)]
 	public string dialogueText;
-	private string originalTextWithTags;
 
 	private bool imageIsTalking = false;
 	private float punctuationPauseCountdown = 0f;
@@ -53,7 +52,6 @@ public class DialogueText : MonoBehaviour {
 		internalLetterTimer = 0;
 		GetComponent<Text>().text = "";
 		isWritingDialogue = true;
-		originalTextWithTags = dialogueText;
 	} 
 	private void DisplayFirstLetter () {
 

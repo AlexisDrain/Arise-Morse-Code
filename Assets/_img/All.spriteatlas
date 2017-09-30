@@ -26,15 +26,22 @@ SpriteAtlas:
       enableTightPacking: 1
     packedHash:
       serializedVersion: 2
-      Hash: 81a0b0d62e1dfb64d0bf358e7b525e50
+      Hash: aa09a1dde9fbf1da0afac6b39cd7f921
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
-    hashString: 81a0b0d62e1dfb64d0bf358e7b525e50
-    totalSpriteSurfaceArea: 118505
+    hashString: aa09a1dde9fbf1da0afac6b39cd7f921
+    totalSpriteSurfaceArea: 143252
     packables:
     - {fileID: 102900000, guid: 48a82c776aa563f4bbf01e2e64468c74, type: 3}
     packedSpriteRenderDataKeys:
+    - b08b944f95f96534298bb78617484b02: 21300000
+    - f77c63a5c7505f248be6f6778ea5008b: 21300008
+    - f77c63a5c7505f248be6f6778ea5008b: 21300010
+    - f77c63a5c7505f248be6f6778ea5008b: 21300000
+    - f77c63a5c7505f248be6f6778ea5008b: 21300002
+    - f77c63a5c7505f248be6f6778ea5008b: 21300004
+    - f77c63a5c7505f248be6f6778ea5008b: 21300006
     - 219a4c68f18bda34aaec42d5ef8b37bd: 21300000
     - 219a4c68f18bda34aaec42d5ef8b37bd: 21300002
     - 219a4c68f18bda34aaec42d5ef8b37bd: 21300004
@@ -52,11 +59,7 @@ SpriteAtlas:
     - 0b9bf988ce01cfe4199adad7ba8481b3: 21300062
     - 0b9bf988ce01cfe4199adad7ba8481b3: 21300060
     - 0b9bf988ce01cfe4199adad7ba8481b3: 21300058
-    - 0b9bf988ce01cfe4199adad7ba8481b3: 21300072
-    - 0b9bf988ce01cfe4199adad7ba8481b3: 21300070
-    - 0b9bf988ce01cfe4199adad7ba8481b3: 21300068
-    - 0b9bf988ce01cfe4199adad7ba8481b3: 21300066
-    - 0b9bf988ce01cfe4199adad7ba8481b3: 21300074
+    - 103dc3462f44fc44caf9408b627304ed: 21300000
     - 717c869ef6dbb674b8696ae912ac921b: 21300002
     - 717c869ef6dbb674b8696ae912ac921b: 21300000
     - 717c869ef6dbb674b8696ae912ac921b: 21300006
@@ -84,8 +87,15 @@ SpriteAtlas:
     - 75c7b42f68934d24da68fde653575c23: 21300000
     - 75c7b42f68934d24da68fde653575c23: 21300002
     - 75c7b42f68934d24da68fde653575c23: 21300016
+    - 3c37d45f44437854ca2bdf67d40b6899: 21300000
     - e88203e716b806643b25469b5f67a28c: 21300000
     - f2900d84471dda641be246a55fa76498: 21300000
+    - c3268d1882eafa648b1e42e256edf06f: 21300000
+    - 7bf33741e9865354cb69e55796f00df2: 21300000
+    - 50890303311d9ab4e9d4ef1a4acd8757: 21300000
+    - cd1768c01331dca4e8e73e8c61c1b98b: 21300000
+    - 00938f9c7c6efcd43bbac94c0b2df3c7: 21300000
+    - ca3ea8aee70f54d448d4f43f55cb13f9: 21300000
     - 73dc4ab1d08f0294aaa872def25d0209: 21300000
     - 039fa42f65637ef4191c9568e463a348: 21300000
     - f041a1572ba02c34d9e506df1834b4b1: 21300000
@@ -97,6 +107,13 @@ SpriteAtlas:
     - e6c117262a34ec542927f0ddf62350f8: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: b08b944f95f96534298bb78617484b02, type: 3}
+  - {fileID: 21300008, guid: f77c63a5c7505f248be6f6778ea5008b, type: 3}
+  - {fileID: 21300010, guid: f77c63a5c7505f248be6f6778ea5008b, type: 3}
+  - {fileID: 21300000, guid: f77c63a5c7505f248be6f6778ea5008b, type: 3}
+  - {fileID: 21300002, guid: f77c63a5c7505f248be6f6778ea5008b, type: 3}
+  - {fileID: 21300004, guid: f77c63a5c7505f248be6f6778ea5008b, type: 3}
+  - {fileID: 21300006, guid: f77c63a5c7505f248be6f6778ea5008b, type: 3}
   - {fileID: 21300000, guid: 219a4c68f18bda34aaec42d5ef8b37bd, type: 3}
   - {fileID: 21300002, guid: 219a4c68f18bda34aaec42d5ef8b37bd, type: 3}
   - {fileID: 21300004, guid: 219a4c68f18bda34aaec42d5ef8b37bd, type: 3}
@@ -114,11 +131,7 @@ SpriteAtlas:
   - {fileID: 21300062, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
   - {fileID: 21300060, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
   - {fileID: 21300058, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
-  - {fileID: 21300072, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
-  - {fileID: 21300070, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
-  - {fileID: 21300068, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
-  - {fileID: 21300066, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
-  - {fileID: 21300074, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
+  - {fileID: 21300000, guid: 103dc3462f44fc44caf9408b627304ed, type: 3}
   - {fileID: 21300002, guid: 717c869ef6dbb674b8696ae912ac921b, type: 3}
   - {fileID: 21300000, guid: 717c869ef6dbb674b8696ae912ac921b, type: 3}
   - {fileID: 21300006, guid: 717c869ef6dbb674b8696ae912ac921b, type: 3}
@@ -146,8 +159,15 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 75c7b42f68934d24da68fde653575c23, type: 3}
   - {fileID: 21300002, guid: 75c7b42f68934d24da68fde653575c23, type: 3}
   - {fileID: 21300016, guid: 75c7b42f68934d24da68fde653575c23, type: 3}
+  - {fileID: 21300000, guid: 3c37d45f44437854ca2bdf67d40b6899, type: 3}
   - {fileID: 21300000, guid: e88203e716b806643b25469b5f67a28c, type: 3}
   - {fileID: 21300000, guid: f2900d84471dda641be246a55fa76498, type: 3}
+  - {fileID: 21300000, guid: c3268d1882eafa648b1e42e256edf06f, type: 3}
+  - {fileID: 21300000, guid: 7bf33741e9865354cb69e55796f00df2, type: 3}
+  - {fileID: 21300000, guid: 50890303311d9ab4e9d4ef1a4acd8757, type: 3}
+  - {fileID: 21300000, guid: cd1768c01331dca4e8e73e8c61c1b98b, type: 3}
+  - {fileID: 21300000, guid: 00938f9c7c6efcd43bbac94c0b2df3c7, type: 3}
+  - {fileID: 21300000, guid: ca3ea8aee70f54d448d4f43f55cb13f9, type: 3}
   - {fileID: 21300000, guid: 73dc4ab1d08f0294aaa872def25d0209, type: 3}
   - {fileID: 21300000, guid: 039fa42f65637ef4191c9568e463a348, type: 3}
   - {fileID: 21300000, guid: f041a1572ba02c34d9e506df1834b4b1, type: 3}
@@ -158,6 +178,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fdfaf2f4ea02182489ce7c3b3a61a9b3, type: 3}
   - {fileID: 21300000, guid: e6c117262a34ec542927f0ddf62350f8, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Buttons
+  - Soldier1 4
+  - Soldier1 5
+  - Soldier1 0
+  - Soldier1 1
+  - Soldier1 2
+  - Soldier1 3
   - grenadeLine_0
   - grenadeLine_1
   - grenadeLine_2
@@ -175,11 +202,7 @@ SpriteAtlas:
   - Player 12
   - Player 11
   - Player 10
-  - Player 17
-  - Player 16
-  - Player 15
-  - Player 14
-  - Player 18
+  - ng_tank
   - BrutalTalkinghead 1
   - BrutalTalkinghead 0
   - BrutalTalkinghead 3
@@ -207,8 +230,15 @@ SpriteAtlas:
   - timer 0
   - timer 1
   - timer 8
+  - button4Red
   - wall
   - Rock
+  - button1
+  - button3
+  - button2
+  - button5
+  - button4
+  - button6
   - Morse-Dash_0
   - wall4
   - wall3

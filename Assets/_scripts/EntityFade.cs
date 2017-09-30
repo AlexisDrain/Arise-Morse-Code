@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class EntityFade : MonoBehaviour {
-
-
+	
 	public bool disableAfterFadeOut = true;
 
 	public float speedMultiplier = 0.5f;
@@ -20,6 +19,10 @@ public class EntityFade : MonoBehaviour {
 		else if (GetComponent<Image>()) {
 			objectType = "UI";
 			defaultColor = GetComponent<Image>().color;
+		}
+		else if (GetComponent<MeshRenderer>()) {
+			objectType = "MeshRenderer";
+			defaultColor = GetComponent<MeshRenderer>().material.GetColor("_TintColor");
 		}
 		else if (GetComponent<Text>()) {
 			objectType = "Text";
@@ -40,6 +43,9 @@ public class EntityFade : MonoBehaviour {
 		}
 		else if (objectType == "Text") {
 			GetComponent<Text>().enabled = true;
+		}
+		else if (objectType == "MeshRenderer") {
+			GetComponent<Renderer>().material.color = Color.white;
 		}
 		//else if (objectType == "CanvasGroup") {
 		//	GetComponent<CanvasGroup>().alpha = 1.0f;
@@ -62,6 +68,12 @@ public class EntityFade : MonoBehaviour {
 			c.a = value;
 			GetComponent<Text>().color = c;
 		}
+		else if (objectType == "MeshRenderer") {
+			Color c = GetComponent<Renderer>().material.color;
+			c.a = value;
+			GetComponent<Renderer>().material.SetColor("_TintColor", c);
+		}
+
 		else if (objectType == "CanvasGroup") {
 			GetComponent<CanvasGroup>().alpha = value;
 		}
@@ -105,6 +117,12 @@ public class EntityFade : MonoBehaviour {
 				c.a = f;
 				GetComponent<Text>().color = c;
 			}
+			else if (objectType == "MeshRenderer") {
+				Color c = GetComponent<Renderer>().material.color;
+				c.a = f;
+				GetComponent<Renderer>().material.SetColor("_TintColor", c);
+			}
+
 			else if (objectType == "CanvasGroup") {
 				GetComponent<CanvasGroup>().alpha = f;
 			}
@@ -132,9 +150,15 @@ public class EntityFade : MonoBehaviour {
 				c.a = f;
 				GetComponent<Text>().color = c;
 			}
+			else if (objectType == "MeshRenderer") {
+				Color c = GetComponent<Renderer>().material.color;
+				c.a = f;
+				GetComponent<Renderer>().material.SetColor("_TintColor", c);
+			}
 			else if (objectType == "CanvasGroup") {
 				GetComponent<CanvasGroup>().alpha = f;
 			}
+
 
 			yield return null;
 		}
@@ -153,7 +177,10 @@ public class EntityFade : MonoBehaviour {
 			else if (objectType == "Text") {
 				GetComponent<Text>().color = defaultColor;
 			}
-				
+			else if (objectType == "MeshRenderer") {
+				GetComponent<Renderer>().material.SetColor("_TintColor", defaultColor);
+			}
+
 		}
 	}
 }

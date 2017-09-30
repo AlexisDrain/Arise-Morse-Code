@@ -137,6 +137,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1349520318559430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224013937497242972}
+  - component: {fileID: 222535727856315748}
+  - component: {fileID: 114671420185029694}
+  - component: {fileID: 114309694096232714}
+  m_Layer: 5
+  m_Name: Crosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1357009138247092
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +410,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4018929335032248}
-  - component: {fileID: 114086000345732270}
+  - component: {fileID: 114881106186433060}
   m_Layer: 0
   m_Name: MorseChar Pool
   m_TagString: Untagged
@@ -711,22 +729,7 @@ MonoBehaviour:
   removeSelfTimer: 15
   letterCountdown: 0.03
   dialogueText: Be careful. This station is infected by /The Congregate\. You won't
-    find many androids like you and I.
---- !u!114 &114086000345732270
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1944066022804742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb9b6a15cf91294cbad9c0ca9e96c5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectsToCreate: 5
-  setPoolTransformAsParent: 1
-  prefeb: {fileID: 1074029381999274, guid: 5a6781b806d16fe43bffdf49bffdcaf1, type: 2}
+    find many androids like you and me.
 --- !u!114 &114103295424734154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -899,6 +902,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: D<color=grey>ash Frenzy</color>
+--- !u!114 &114309694096232714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349520318559430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ab19a9bf2c3bc40a054dc254accd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 21300000, guid: f00a89317a2c4a54cae4c45d8c40d37a, type: 3}
+  dot: {fileID: 21300002, guid: f00a89317a2c4a54cae4c45d8c40d37a, type: 3}
+  dash: {fileID: 21300004, guid: f00a89317a2c4a54cae4c45d8c40d37a, type: 3}
 --- !u!114 &114314939358828630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,8 +1122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0319fa466cf200a439267df59483a732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToThrow: {fileID: 1871670950779082, guid: a696f402d67b23543a6d85ad06cd2009,
-    type: 2}
+  itemToThrow: Rock
   throwImpulse: 15
 --- !u!114 &114600065602600246
 MonoBehaviour:
@@ -1119,8 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0319fa466cf200a439267df59483a732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToThrow: {fileID: 1088843515076624, guid: c4106376682c1914cb6f390e3b3b3a57,
-    type: 2}
+  itemToThrow: Grenade
   throwImpulse: 15
 --- !u!114 &114626845733204504
 MonoBehaviour:
@@ -1243,6 +1258,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114671420185029694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349520318559430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f00a89317a2c4a54cae4c45d8c40d37a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114673812741647598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1518,6 +1560,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: (15)
+--- !u!114 &114881106186433060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944066022804742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33d7b562d711b44db5aad9f7e96aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectsToCreate: 5
+  setPoolTransformAsParent: 1
+  prefeb: {fileID: 1074029381999274, guid: 5a6781b806d16fe43bffdf49bffdcaf1, type: 2}
 --- !u!114 &114887362732031932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1691,6 +1748,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1985976809811364}
+--- !u!222 &222535727856315748
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349520318559430}
 --- !u!222 &222672229185051016
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1747,6 +1810,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!224 &224013937497242972
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349520318559430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224062230272872714}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 48, y: 48}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224030755872095714
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1800,6 +1881,7 @@ RectTransform:
   - {fileID: 224272740255052862}
   - {fileID: 224702141550504752}
   - {fileID: 224251019761179302}
+  - {fileID: 224013937497242972}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

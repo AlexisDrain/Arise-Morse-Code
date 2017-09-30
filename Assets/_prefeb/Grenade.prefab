@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4317235496420354}
   - component: {fileID: 65201275363297364}
   - component: {fileID: 54949086143155746}
+  - component: {fileID: 114326056369487326}
   m_Layer: 11
   m_Name: Grenade
   m_TagString: Player
@@ -249,6 +250,18 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.2
   m_Autodestruct: 0
+--- !u!114 &114326056369487326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088843515076624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d966dddab918c4cb46f5c5953db68b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilExplodeDefault: 1.5
 --- !u!212 &212630185339487386
 SpriteRenderer:
   m_ObjectHideFlags: 1

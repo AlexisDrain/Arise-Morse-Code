@@ -11,10 +11,15 @@ public class GameManager : MonoBehaviour {
 	
 	public static int wallsLayerMask;
 	public static int usableWallLayerMask;
-	
+
+	public static Pool explosionsPool;
+	public static Pool grenadesPool;
+	public static Pool rocksPool;
+
 	public static GameObject gameManagerGameObject;
 	public static GameObject interpreter;
 	public static GameObject player;
+	public static Transform playerTransform;
 	private TrailRenderer playerTrail;
 
 	public static UnityEvent onSceneLoad = new UnityEvent();
@@ -33,7 +38,12 @@ public class GameManager : MonoBehaviour {
 		gameManagerGameObject = gameObject;
 		interpreter = GameObject.Find("Interpreter");
 
+		explosionsPool = transform.Find("ExplosionsPool").GetComponent<Pool>();
+		grenadesPool = transform.Find("GrenadesPool").GetComponent<Pool>();
+		rocksPool = transform.Find("RocksPool").GetComponent<Pool>();
+
 		player = GameObject.Find("Player");
+		playerTransform = player.transform;
 		playerTrail = player.transform.Find("Trail").GetComponent<TrailRenderer>();
 
 		playerGroundOffset = new Vector3(0f, player.transform.position.y, 0f);
@@ -58,6 +68,10 @@ public class GameManager : MonoBehaviour {
 		
 		if (previousSceneName != null) {
 			SceneManager.UnloadSceneAsync(previousSceneName);
+
+			rocksPool.DeactivateAllMembers();
+			grenadesPool.DeactivateAllMembers();
+			explosionsPool.DeactivateAllMembers();
 		}
 	}
 	private void PositionPlayerInNewLevel(Scene arg0) {
@@ -71,11 +85,11 @@ public class GameManager : MonoBehaviour {
 		string enteranceLocation = "";
 		Vector3 playerOffset = new Vector3(0f, 0f);
 
-		if (previousExitCamLocation == "Top") {
-			enteranceLocation = "Bottom";
+		if (previousExitCamLocation == "Up") {
+			enteranceLocation = "Down";
 			playerOffset = new Vector3(0f, 0f, 2f);
-		} else if (previousExitCamLocation == "Bottom") {
-			enteranceLocation = "Top";
+		} else if (previousExitCamLocation == "Down") {
+			enteranceLocation = "Up";
 			playerOffset = new Vector3(0f, 0f, -2f);
 		}
 		else if (previousExitCamLocation == "Left") {

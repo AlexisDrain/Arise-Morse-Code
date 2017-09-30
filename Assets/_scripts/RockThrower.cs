@@ -4,19 +4,44 @@ using UnityEngine;
 
 public class RockThrower : MonoBehaviour {
 
-	public GameObject itemToThrow;
+	public string itemToThrow = "Rock";
 	public float throwImpulse = 5f;
 	
 	// Use this for initialization
 	public void UseItem () {
-		GameObject temp = GameObject.Instantiate(itemToThrow);
 
-		temp.transform.position = GameManager.player.transform.position;
-		temp.GetComponent<Rigidbody>().AddForce(GameManager.player.GetComponent<PlayerMovement>().throwDirection * throwImpulse, ForceMode.Impulse);
 
-		Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
+		Vector3 throwTarget = Vector3.zero;
 
-		StartCoroutine(RestartPlayerItemCollision(temp));
+		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+		Physics.Raycast(mouseRay, out hit);
+		if (hit.collider != null) {
+			throwTarget = hit.point;
+		}
+
+		Vector3 throwDirection = (throwTarget - GameManager.playerTransform.position).normalized;
+
+		if (itemToThrow == "Rock") {
+
+			GameObject temp = GameManager.rocksPool.Spawn(GameManager.playerTransform.position);
+			
+			temp.GetComponent<Rigidbody>().AddForce(throwDirection * throwImpulse, ForceMode.Impulse);
+			Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
+
+			StartCoroutine(RestartPlayerItemCollision(temp));
+		} else {
+			if (itemToThrow == "Grenade") {
+
+				GameObject temp = GameManager.grenadesPool.Spawn(GameManager.playerTransform.position);
+				
+
+				temp.GetComponent<Rigidbody>().AddForce(throwDirection * throwImpulse, ForceMode.Impulse);
+				Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
+
+				StartCoroutine(RestartPlayerItemCollision(temp));
+			}
+		}
 	}
 
 	IEnumerator RestartPlayerItemCollision (GameObject thrownObject) {

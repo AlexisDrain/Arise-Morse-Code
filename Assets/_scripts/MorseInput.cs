@@ -18,6 +18,7 @@ public class MorseInput : MonoBehaviour {
 	private Vector2 needleStartPosition;
 	private FlashEntity needleFlashEntity;
 	private Pool dotPool;
+	private Crosshair crosshair;
 
 	private AudioSource morseAudioSource;
 	private float morseAudioSourceDefaultVolume;
@@ -31,6 +32,7 @@ public class MorseInput : MonoBehaviour {
 		needleStartPosition = needleGameObject.GetComponent<RectTransform>().anchoredPosition;
 		needleFlashEntity = needleGameObject.GetComponent<FlashEntity>();
 		dotPool = GameObject.Find("MorseChar Pool").GetComponent<Pool>();
+		crosshair = GameObject.Find("Canvas/Crosshair").GetComponent<Crosshair>();
 
 		for (int i = 0; i < dotPool.pooledObjects.Count; i++) {
 
@@ -122,7 +124,7 @@ public class MorseInput : MonoBehaviour {
 
 	private void Update () {
 
-		if (hardInput.GetKey("KeyMorse") == true || hardInput.GetKey("PadMorse")) {
+		if (hardInput.GetKey("KeyMorse") == true || hardInput.GetKey("PadMorse") || Input.GetMouseButton(0)) {
 
 			buttonHeldTime += Time.deltaTime;
 			// reset command timer
@@ -134,15 +136,15 @@ public class MorseInput : MonoBehaviour {
 
 			commandEndTimer += Time.deltaTime;
 		}
-		
-		if (hardInput.GetKeyDown("KeyMorse") == true || hardInput.GetKeyDown("PadMorse")) {
+
+		if (hardInput.GetKeyDown("KeyMorse") == true || hardInput.GetKeyDown("PadMorse") || Input.GetMouseButtonDown(0)) {
 
 			StopAllCoroutines();
 			morseAudioSource.volume = morseAudioSourceDefaultVolume;
 			morseAudioSource.Play();
 		}
 
-		if (hardInput.GetKeyUp("KeyMorse") == true || hardInput.GetKeyUp("PadMorse")) {
+		if (hardInput.GetKeyUp("KeyMorse") == true || hardInput.GetKeyUp("PadMorse") || Input.GetMouseButtonUp(0)) {
 				
 			EnterCharacter();
 			needleFlashEntity.StartTimer();
@@ -151,6 +153,18 @@ public class MorseInput : MonoBehaviour {
 		
 		if (result.Length > 0 && commandEndTimer > 0.3f) {
 			EnterCommand(result);
+		}
+
+
+		// crosshair graphic
+		if (buttonHeldTime == 0f) {
+			crosshair.SetCrosshairGraphic(0);
+		}
+		else if (buttonHeldTime < 0.2f) {
+			crosshair.SetCrosshairGraphic(1);
+		}
+		else if (buttonHeldTime > 0.2f) {
+			crosshair.SetCrosshairGraphic(2);
 		}
 	}
 }

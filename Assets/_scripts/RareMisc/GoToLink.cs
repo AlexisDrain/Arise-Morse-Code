@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GoToLink : MonoBehaviour, IPointerDownHandler {
+public class GoToLink : MonoBehaviour, IPointerClickHandler {
 
 	public string link;
 
-	public void OnPointerDown(PointerEventData eventData) {
+	public void OnPointerClick (PointerEventData eventData) {
 		
 		if (Application.platform == RuntimePlatform.WebGLPlayer) {
 

@@ -262,8 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806b2ad6319e6b241b326f4f59ee039b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRight: {fileID: 9100000, guid: 6b588d067ca050c4caf1145816cbded5, type: 2}
+  playerUp: {fileID: 22100000, guid: ea8b9f4d905996f4fa06397f12a8cfea, type: 2}
+  playerDown: {fileID: 22100000, guid: 49c83194bb6271a41b81fe4b9ad62dcf, type: 2}
+  playerLeft: {fileID: 22100000, guid: 95da080e0c52a094bac5a1085e7114ae, type: 2}
   direction: {x: 1, y: 0}
-  throwDirection: {x: 1, y: 0, z: 0}
   movementImpulse: 3
 --- !u!212 &212110024946742790
 SpriteRenderer:
@@ -294,10 +297,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300038, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
+  m_SortingLayerID: -1503150891
+  m_SortingLayer: 1
+  m_SortingOrder: 100
+  m_Sprite: {fileID: 21300042, guid: 0b9bf988ce01cfe4199adad7ba8481b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
