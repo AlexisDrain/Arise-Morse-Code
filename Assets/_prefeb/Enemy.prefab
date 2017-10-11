@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 65478594518416126}
   - component: {fileID: 54376826634677428}
   - component: {fileID: 114630191607799406}
-  - component: {fileID: 195703033485195856}
+  - component: {fileID: 195171388413273454}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146354994157254}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -1, z: -0.75}
+  m_LocalPosition: {x: 0, y: -1, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4407265159846792}
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566226637100542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0.5, z: -5}
+  m_LocalPosition: {x: 7, y: 0.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4398904458655664}
@@ -130,7 +130,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0.82}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95332826538736198
 Animator:
   serializedVersion: 3
@@ -250,15 +250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a7c42125f1aad439a18b2aa1157230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPos: {x: -5, y: 0.5, z: 3.74635}
---- !u!195 &195703033485195856
+  role: Aggressor
+--- !u!195 &195171388413273454
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566226637100542}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8

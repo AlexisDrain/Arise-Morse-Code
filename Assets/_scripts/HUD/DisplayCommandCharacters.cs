@@ -27,6 +27,7 @@ public class DisplayCommandCharacters : MonoBehaviour {
 
 				temp.transform.SetParent(dashDotTrans);
 				//temp.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+				temp.GetComponent<RectTransform>().localScale = Vector3.one; // this needed for resolution scale
 				temp.GetComponent<RectTransform>().sizeDelta = new Vector2(10f, 10f);
 				temp.GetComponent<RectTransform>().anchorMin = new Vector2(1f, 1f);
 				temp.GetComponent<RectTransform>().anchorMax = new Vector2(1f, 1f);
@@ -37,6 +38,7 @@ public class DisplayCommandCharacters : MonoBehaviour {
 
 				temp.transform.SetParent(dashDotTrans);
 				//temp.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+				temp.GetComponent<RectTransform>().localScale = Vector3.one; // this needed for resolution scale
 				temp.GetComponent<RectTransform>().sizeDelta = new Vector2(20f, 10f);
 				temp.GetComponent<RectTransform>().anchorMin = new Vector2(1f, 1f);
 				temp.GetComponent<RectTransform>().anchorMax = new Vector2(1f, 1f);

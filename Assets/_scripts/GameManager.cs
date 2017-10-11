@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject dot;
 	public GameObject dash;
-	
+
+	public static int floorLayerMask;
 	public static int wallsLayerMask;
 	public static int usableWallLayerMask;
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 
+		floorLayerMask = LayerMask.NameToLayer("Floor");
 		wallsLayerMask = LayerMask.NameToLayer("Walls");
 		usableWallLayerMask = LayerMask.NameToLayer("UsableWall");
 		

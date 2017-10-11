@@ -15,7 +15,7 @@ public class RockThrower : MonoBehaviour {
 
 		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
-		Physics.Raycast(mouseRay, out hit);
+		Physics.Raycast(mouseRay, out hit, 50f, (1 << GameManager.floorLayerMask));
 		if (hit.collider != null) {
 			throwTarget = hit.point;
 		}

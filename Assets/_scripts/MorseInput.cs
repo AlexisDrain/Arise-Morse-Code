@@ -89,8 +89,10 @@ public class MorseInput : MonoBehaviour {
 			//dotPool.Spawn(needleGameObject.GetComponent<RectTransform>().position + new Vector3(8f, -8f, 1f));
 			dotPool.pooledObjects[result.Length - 1].GetComponent<RectTransform>().sizeDelta = new Vector2(16, 16);
 			dotPool.pooledObjects[result.Length - 1].GetComponent<Image>().sprite = dotImg;
-			dotPool.pooledObjects[result.Length - 1].transform.position = needleGameObject.GetComponent<RectTransform>().position + new Vector3(8f, -8f, 1f);
-			needleGameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(20f, 0f) + needleGameObject.GetComponent<RectTransform>().anchoredPosition;
+			//dotPool.pooledObjects[result.Length - 1].GetComponent<RectTransform>().anchoredPosition = needleGameObject.GetComponent<RectTransform>().position + new Vector3(8f, -8f, 1f);
+			dotPool.pooledObjects[result.Length - 1].transform.localScale = Vector3.one; // this needed for resolution scale
+
+			//needleGameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(20f, 0f) + needleGameObject.GetComponent<RectTransform>().anchoredPosition;
 		}
 		else {
 			// dash
@@ -98,8 +100,11 @@ public class MorseInput : MonoBehaviour {
 			//dotPool.Spawn(needleGameObject.GetComponent<RectTransform>().position + new Vector3 (17f, -8f, 1f));
 			dotPool.pooledObjects[result.Length - 1].GetComponent<RectTransform>().sizeDelta = new Vector2(32, 16);
 			dotPool.pooledObjects[result.Length - 1].GetComponent<Image>().sprite = dashImg;
-			dotPool.pooledObjects[result.Length - 1].transform.position = needleGameObject.GetComponent<RectTransform>().position + new Vector3(17f, -8f, 1f);
-			needleGameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(38f, 0f) + needleGameObject.GetComponent<RectTransform>().anchoredPosition;
+			//dotPool.pooledObjects[result.Length - 1].GetComponent<RectTransform>().anchoredPosition = needleGameObject.GetComponent<RectTransform>().position + new Vector3(17f, -8f, 1f);
+			dotPool.pooledObjects[result.Length - 1].transform.localScale = Vector3.one; // this needed for resolution scale
+
+			//needleGameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(38f, 0f) + needleGameObject.GetComponent<RectTransform>().anchoredPosition;
+
 		}
 		dotPool.pooledObjects[result.Length - 1].GetComponent<Image>().enabled = true;
 
@@ -130,7 +135,7 @@ public class MorseInput : MonoBehaviour {
 			// reset command timer
 			commandEndTimer = 0;
 
-			needleFlashEntity.ForceTrue();
+			needleFlashEntity.ForceFalse();
 		}
 		else {
 
@@ -151,7 +156,8 @@ public class MorseInput : MonoBehaviour {
 			buttonHeldTime = 0;
 		}
 		
-		if (result.Length > 0 && commandEndTimer > 0.3f) {
+		// changed from 0.3f to 0.4f
+		if (result.Length > 0 && commandEndTimer > 0.4f) {
 			EnterCommand(result);
 		}
 
