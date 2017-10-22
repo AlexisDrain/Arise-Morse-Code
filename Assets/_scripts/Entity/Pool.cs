@@ -45,7 +45,7 @@ public class Pool : MonoBehaviour {
 
 				toSpawn.transform.position = position;
 				toSpawn.SetActive(true);
-				
+
 				return toSpawn;
 			}
 		}

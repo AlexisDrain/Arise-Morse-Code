@@ -65,26 +65,30 @@ public class Crosshair : MonoBehaviour {
 
 	private Ray mouseRay;
 	private RaycastHit mouseHit, lineHit;
+	public Vector3 playerTarget;
+	private float playerheight;
 	private void LateUpdate () {
 		// crosshair pos
 		myRectTransform.position = Input.mousePosition;
 
 		// player target point projected on 45 degree ground.
-		Vector3 playerTarget = Vector3.zero;
-
+		
 		mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Physics.Raycast(mouseRay, out mouseHit, 50f, (1 << GameManager.floorLayerMask));
 		if (mouseHit.collider != null) {
-			playerTarget = mouseHit.point + new Vector3(0f, GameManager.playerTransform.position.y, 0f);
+			playerTarget = mouseHit.point + new Vector3(0f, GameManager.playerBoxCollider.bounds.center.y, 0f);
 		}
+		
 
 		// red line of throw
-		Physics.Raycast(GameManager.playerTransform.position, playerTarget - GameManager.playerTransform.position, out lineHit, 15f, ~(1 << GameManager.floorLayerMask));
+		Physics.Raycast(GameManager.playerBoxCollider.bounds.center, playerTarget - GameManager.playerBoxCollider.bounds.center, out lineHit, 50f, ~(1 << GameManager.floorLayerMask));
 		
 		if (lineHit.collider != null) {
-			playerCrosshairLine.SetPosition(1, GameManager.playerTransform.InverseTransformPoint(lineHit.point));
-		} else {
-			playerCrosshairLine.SetPosition(1, GameManager.playerTransform.InverseTransformPoint(playerTarget));
+			playerCrosshairLine.SetPosition(0, GameManager.playerBoxCollider.bounds.center);
+			playerCrosshairLine.SetPosition(1, lineHit.point);
 		}
+		// else {
+		// 	 playerCrosshairLine.SetPosition(1, GameManager.playerTransform.InverseTransformPoint(playerTarget));
+		// }
 	}
 }

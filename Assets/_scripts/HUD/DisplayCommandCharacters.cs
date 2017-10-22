@@ -12,8 +12,11 @@ public class DisplayCommandCharacters : MonoBehaviour {
 
 	public void UseCommand () {
 		onCommandUse.Invoke();
-	}
 
+		GameManager.morseCommandSelector.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+		GameManager.morseCommandSelector.GetComponent<EntityFade>().StartFadeOut(3f);
+	}
+	
 	private void Start () {
 
 		GameObject temp;

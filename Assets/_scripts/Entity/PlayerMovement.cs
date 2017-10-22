@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 	public AnimatorOverrideController playerDown;
 	public AnimatorOverrideController playerLeft;
 	private Vector2 currentDirection;
+	private bool isCrawling = false;
 
 	public Vector2 direction = new Vector2(1f, 0f);
 	public float movementImpulse;
@@ -24,6 +25,18 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
+
+		if (hardInput.GetKey("KeyCrawl")) {
+			isCrawling = true;
+			movementImpulse = 2f;
+		}
+		else {
+			isCrawling = false;
+			movementImpulse = 3f;
+		}
+		myAnimator.SetBool("IsCrawling", isCrawling);
+
+
 		float h = Mathf.Clamp(Input.GetAxis("Horizontal") + hardInput.GetAxis("PadLeft", "PadRight"), -1, 1);
 		float v = Mathf.Clamp(Input.GetAxis("Vertical") + hardInput.GetAxis("PadUp", "PadDown"), -1, 1);
 

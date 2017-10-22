@@ -129,7 +129,7 @@ public class MorseInput : MonoBehaviour {
 
 	private void Update () {
 
-		if (hardInput.GetKey("KeyMorse") == true || hardInput.GetKey("PadMorse") || Input.GetMouseButton(0)) {
+		if (hardInput.GetKey("PadMorse") || Input.GetMouseButton(0)) {
 
 			buttonHeldTime += Time.deltaTime;
 			// reset command timer
@@ -142,14 +142,14 @@ public class MorseInput : MonoBehaviour {
 			commandEndTimer += Time.deltaTime;
 		}
 
-		if (hardInput.GetKeyDown("KeyMorse") == true || hardInput.GetKeyDown("PadMorse") || Input.GetMouseButtonDown(0)) {
+		if (hardInput.GetKeyDown("PadMorse") || Input.GetMouseButtonDown(0)) {
 
 			StopAllCoroutines();
 			morseAudioSource.volume = morseAudioSourceDefaultVolume;
 			morseAudioSource.Play();
 		}
 
-		if (hardInput.GetKeyUp("KeyMorse") == true || hardInput.GetKeyUp("PadMorse") || Input.GetMouseButtonUp(0)) {
+		if (hardInput.GetKeyUp("PadMorse") || Input.GetMouseButtonUp(0)) {
 				
 			EnterCharacter();
 			needleFlashEntity.StartTimer();

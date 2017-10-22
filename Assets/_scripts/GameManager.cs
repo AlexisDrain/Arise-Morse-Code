@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour {
 	public static Pool explosionsPool;
 	public static Pool grenadesPool;
 	public static Pool rocksPool;
+	public static Pool bulletPool;
 
 	public static GameObject gameManagerGameObject;
 	public static GameObject interpreter;
 	public static GameObject player;
+	public static Crosshair crosshair;
+	public static GameObject morseCommandSelector;
 	public static Transform playerTransform;
+	public static BoxCollider playerBoxCollider;
 	private TrailRenderer playerTrail;
 
 	public static UnityEvent onSceneLoad = new UnityEvent();
@@ -43,9 +47,13 @@ public class GameManager : MonoBehaviour {
 		explosionsPool = transform.Find("ExplosionsPool").GetComponent<Pool>();
 		grenadesPool = transform.Find("GrenadesPool").GetComponent<Pool>();
 		rocksPool = transform.Find("RocksPool").GetComponent<Pool>();
+		bulletPool = transform.Find("BulletPool").GetComponent<Pool>();
 
+		morseCommandSelector = GameObject.Find("Canvas/MorseHighlight");
+		crosshair = GameObject.Find("Canvas/Crosshair").GetComponent<Crosshair>();
 		player = GameObject.Find("Player");
 		playerTransform = player.transform;
+		playerBoxCollider = player.GetComponent<BoxCollider>();
 		playerTrail = player.transform.Find("Trail").GetComponent<TrailRenderer>();
 
 		playerGroundOffset = new Vector3(0f, player.transform.position.y, 0f);
@@ -74,6 +82,7 @@ public class GameManager : MonoBehaviour {
 			rocksPool.DeactivateAllMembers();
 			grenadesPool.DeactivateAllMembers();
 			explosionsPool.DeactivateAllMembers();
+			bulletPool.DeactivateAllMembers();
 		}
 	}
 	private void PositionPlayerInNewLevel(Scene arg0) {

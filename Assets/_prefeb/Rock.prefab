@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4621369464789858}
   - component: {fileID: 65385729754922690}
   - component: {fileID: 54044276756587446}
+  - component: {fileID: 114388035116529746}
   m_Layer: 11
   m_Name: Rock
   m_TagString: Player
@@ -219,6 +220,20 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.2
   m_Autodestruct: 0
+--- !u!114 &114388035116529746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871670950779082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eff568fbdbca8b45a99c5b8bd59baf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: Rock
+  hitPoints: -10
+  stunTime: 3
 --- !u!212 &212018590877947160
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,41 +9,75 @@ public class RockThrower : MonoBehaviour {
 	
 	// Use this for initialization
 	public void UseItem () {
-
-
-		Vector3 throwTarget = Vector3.zero;
-
-		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
-		Physics.Raycast(mouseRay, out hit, 50f, (1 << GameManager.floorLayerMask));
-		if (hit.collider != null) {
-			throwTarget = hit.point;
-		}
-
-		Vector3 throwDirection = (throwTarget - GameManager.playerTransform.position).normalized;
+		
 
 		if (itemToThrow == "Rock") {
 
-			GameObject temp = GameManager.rocksPool.Spawn(GameManager.playerTransform.position);
+			Vector3 throwDirection = (GameManager.crosshair.playerTarget - GameManager.playerTransform.position).normalized;
+
+			GameObject temp = GameManager.rocksPool.Spawn(GameManager.playerBoxCollider.bounds.center);
 			
 			temp.GetComponent<Rigidbody>().AddForce(throwDirection * throwImpulse, ForceMode.Impulse);
 			Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
 
 			StartCoroutine(RestartPlayerItemCollision(temp));
-		} else {
-			if (itemToThrow == "Grenade") {
 
-				GameObject temp = GameManager.grenadesPool.Spawn(GameManager.playerTransform.position);
+		} else if (itemToThrow == "Grenade") {
+
+			Vector3 throwDirection = (GameManager.crosshair.playerTarget - GameManager.playerTransform.position).normalized;
+
+			GameObject temp = GameManager.grenadesPool.Spawn(GameManager.playerBoxCollider.bounds.center);
 				
+			temp.GetComponent<Rigidbody>().AddForce(throwDirection * throwImpulse, ForceMode.Impulse);
+			Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
 
-				temp.GetComponent<Rigidbody>().AddForce(throwDirection * throwImpulse, ForceMode.Impulse);
+			StartCoroutine(RestartPlayerItemCollision(temp));
+		}
+		else if (itemToThrow == "Machinegun") {
+			StartCoroutine("MachinegunDelay");
+		} else if (itemToThrow == "SuperShotgun") {
+
+			Vector3 throwDirection = (GameManager.crosshair.playerTarget - GameManager.playerTransform.position).normalized;
+
+			for (int i = 0; i < 7; i++) {
+
+				Vector3 shotgunThrowPlusOffset = Vector3.Cross(throwDirection, new Vector3(Mathf.Cos(i), Mathf.Sin(i), 0f)).normalized;
+
+				GameObject temp = GameManager.bulletPool.Spawn(GameManager.playerBoxCollider.bounds.center);
+
+				temp.GetComponent<Rigidbody>().AddForce(shotgunThrowPlusOffset * throwImpulse, ForceMode.Impulse);
 				Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
 
 				StartCoroutine(RestartPlayerItemCollision(temp));
 			}
+			
 		}
 	}
 
+	IEnumerator MachinegunDelay () {
+		MachinegunFire();
+		yield return new WaitForSeconds(0.1f);
+		MachinegunFire();
+		yield return new WaitForSeconds(0.1f);
+		MachinegunFire();
+
+		yield return new WaitForSeconds(0.3f);
+		MachinegunFire();
+		yield return new WaitForSeconds(0.1f);
+		MachinegunFire();
+		yield return new WaitForSeconds(0.1f);
+		MachinegunFire();
+	}
+	private void MachinegunFire() {
+
+		Vector3 throwDirection = (GameManager.crosshair.playerTarget - GameManager.playerTransform.position).normalized;
+
+		GameObject temp = GameManager.bulletPool.Spawn(GameManager.playerBoxCollider.bounds.center);
+		temp.GetComponent<Rigidbody>().AddForce(throwDirection * throwImpulse, ForceMode.Impulse);
+		Physics.IgnoreCollision(temp.GetComponent<Collider>(), GameManager.player.GetComponent<Collider>(), true);
+
+		StartCoroutine(RestartPlayerItemCollision(temp));
+	}
 	IEnumerator RestartPlayerItemCollision (GameObject thrownObject) {
 		yield return new WaitForSeconds(0.1f);
 
