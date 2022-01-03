@@ -16,20 +16,20 @@ public class AILightningDude : MonoBehaviour {
 	private Transform myTransform;
 	private SpriteRenderer mySpriteRenderer;
 	private Animator myAnimator;
-	private NavMeshAgent myNavMeshAgent;
+	private Rigidbody myRigidbody;
 
 	private void Start () {
 
 		myTransform = transform;
 		mySpriteRenderer = myTransform.Find("Img").GetComponent<SpriteRenderer>();
 		myAnimator = myTransform.Find("Img").GetComponent<Animator>();
-		myNavMeshAgent = GetComponent<NavMeshAgent>();
+		myRigidbody = GetComponent<Rigidbody>();
 
 		stunned = false;
 
 		startPoint = myTransform.position;
 
-		SetRole(role);
+		//SetRole(role);
 	}
 
 	public IEnumerator Stun(float timeTillEnd) {
@@ -41,7 +41,7 @@ public class AILightningDude : MonoBehaviour {
 
 		stunned = false;
 	}
-
+	/*
 	private void SetRole(string newRole) {
 
 		if (newRole == "Aggressor") {
@@ -61,12 +61,13 @@ public class AILightningDude : MonoBehaviour {
 			myNavMeshAgent.SetDestination(targetPos);
 		}
 	}
-
+	*/
 	private void Update() {
 		//if (noticedPlayer == true && playerWithinSight == false) {
 		//}
 		if (noticedPlayer == true) {
-			
+			targetPos = GameManager.playerTransform.position;
+			/*
 			if (role == "Patrol") {
 				SetRole("Aggressor");
 			}
@@ -81,9 +82,9 @@ public class AILightningDude : MonoBehaviour {
 			} else if (role == "Coward") {
 				targetPos = new Vector3(-GameManager.playerTransform.position.x, 0f, -GameManager.playerTransform.position.z);
 			}
-
+			*/
 			Debug.DrawLine(transform.position, targetPos, Color.green);
-			myNavMeshAgent.SetDestination(targetPos);
+			//myNavMeshAgent.SetDestination(targetPos);
 		}
 
 		RaycastHit hit;
@@ -102,10 +103,10 @@ public class AILightningDude : MonoBehaviour {
 
 		// visual shite
 
-		if (myNavMeshAgent.velocity.x < 0) {
+		if (myRigidbody.velocity.x < 0) {
 			mySpriteRenderer.flipX = true;
 		}
-		else if (myNavMeshAgent.velocity.x > 0) {
+		else if (myRigidbody.velocity.x > 0) {
 			mySpriteRenderer.flipX = false;
 		}
 		else { // no velocity
@@ -120,11 +121,11 @@ public class AILightningDude : MonoBehaviour {
 			}
 		}
 
-		if (myNavMeshAgent.velocity.magnitude > 1f) {
+		if (myRigidbody.velocity.magnitude > 1f) {
 			myAnimator.SetBool("IsMoving", true);
 		} else {
 			myAnimator.SetBool("IsMoving", false);
-
+			/*
 			// since patroling is just visual fluff, I'll leave this logic here.
 			if (role == "Patrol") { // and stopped
 				if (Vector3.Distance(myNavMeshAgent.destination, myTransform.position) < 1f) {
@@ -136,6 +137,7 @@ public class AILightningDude : MonoBehaviour {
 					}
 				}
 			}
+			*/
 		}
 	}
 }
