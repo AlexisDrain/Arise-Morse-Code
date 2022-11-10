@@ -10,7 +10,7 @@ public class TimerUntilEvent : MonoBehaviour {
 	public UnityEvent events;
 	
 	private void OnEnable() {
-
+		Debug.LogWarning("TimerUntilEvent is function is depreicated. Use Unity function");
 		if (startCountdownOnAwake == true) {
 			StartTimer ();
 		}

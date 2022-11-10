@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CameraFollow : MonoBehaviour
 {
-
+    // test github
     public Vector2 cameraBounds = new Vector2(0, 0);
     public Vector2 offset = new Vector2(0, 0);
 
@@ -20,27 +20,31 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.playerTransform.position.x > cameraBounds.x + transform.position.x + offset.x) {
+        //print(GameManager.playerTransform.position);
+
+        Debug.DrawLine(-cameraBounds, cameraBounds);
+
+		if (GameManager.playerTransform.position.x > cameraBounds.x + transform.position.x + offset.x) {
+
             transform.position = new Vector3(transform.position.x + cameraBounds.x * 2, 0f, transform.position.y);
-
             cameraCoords = new Vector2(cameraCoords.x + 1, cameraCoords.y);
-            levelnameText.text = "x" + cameraCoords.x + "y" + cameraCoords.y;
+
         } else if (GameManager.playerTransform.position.x < -cameraBounds.x + transform.position.x - offset.x) {
+
             transform.position = new Vector3(transform.position.x - cameraBounds.x * 2, 0f, transform.position.z);
-
             cameraCoords = new Vector2(cameraCoords.x - 1, cameraCoords.y);
-            levelnameText.text = "x" + cameraCoords.x + "y" + cameraCoords.y;
-        // } else if (GameManager.playerTransform.position.z > cameraBounds.y + transform.position.y + offset.y) {
-            //transform.position = new Vector3(transform.position.x, transform.position.y + cameraBounds.y * 2 + offset.y);
 
-          //  cameraCoords = new Vector2(cameraCoords.x, cameraCoords.y + 1);
-           // levelnameText.text = "x" + cameraCoords.x + "y" + cameraCoords.y;
-        } else if (GameManager.playerTransform.position.z < -cameraBounds.y + transform.position.z + offset.y) {
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z - cameraBounds.y * 2);
+         } else if (GameManager.playerTransform.position.z > cameraBounds.y + transform.position.z) {
+            print("up");
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z + cameraBounds.y * 2);
+            cameraCoords = new Vector2(cameraCoords.x, cameraCoords.y + 1);
 
+        } else if (GameManager.playerTransform.position.z < -cameraBounds.y + transform.position.z) {
+			print("down");
+			transform.position = new Vector3(transform.position.x, 0f, transform.position.z - cameraBounds.y * 2);
             cameraCoords = new Vector2(cameraCoords.x, cameraCoords.y - 1);
-            levelnameText.text = "x" + cameraCoords.x + "y" + cameraCoords.y;
-            print(levelnameText.text);
         }
+
+        levelnameText.text = "x" + cameraCoords.x + "y" + cameraCoords.y;
     }
 }
