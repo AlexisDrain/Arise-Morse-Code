@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Subtract
+  m_Name: Checkpoint2
   m_Shader: {fileID: 4800000, guid: b36682a2a82e54bb28920dd1a712dc4d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -24,8 +24,10 @@ Material:
     m_Floats:
     - _FaceToggle: 1
     - _GridAlpha: 0.3
-    - _GridSize: 0.5
+    - _GridSize: 1
+    - _GridStrength: 0.3
+    - _GridThickness: 0.03
     - _GridToggle: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.6431373, b: 0, a: 0.6862745}
+    - _Color: {r: 0, g: 0.70980394, b: 1, a: 0.2}
   m_BuildTextureStacks: []
